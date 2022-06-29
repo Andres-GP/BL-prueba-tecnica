@@ -10,17 +10,12 @@ function App() {
 
   useEffect(() => {
     const loadNews = async () => {
-      const response = await axios.get(
-        "http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b275450c65924bad8d6bd46a9100aaee"
-      );
+      const response = await axios.get(`http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_API_KEY}`);
       setNews(response.data.articles);
-      console.log("news1", response);
       setLoading(false)
     };
     loadNews();
   }, []);
-
-
   
   return (
     <div className="app-container">
